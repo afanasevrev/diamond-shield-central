@@ -1,4 +1,4 @@
-package ru.diamondshield.central.dto.organization;
+package ru.diamondshield_central.dto.organization;
 
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
