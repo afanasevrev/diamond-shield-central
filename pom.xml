@@ -114,6 +114,13 @@
 			<artifactId>jackson-databind</artifactId>
 		</dependency>
 
+		<!-- Apache POI нужен для чтения XLSX-файлов при групповом импорте физических лиц -->
+		<dependency>
+			<groupId>org.apache.poi</groupId>
+			<artifactId>poi-ooxml</artifactId>
+			<version>5.5.1</version>
+		</dependency>
+
 		<!-- Tests -->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
