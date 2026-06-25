@@ -44,6 +44,14 @@ public class LocalServer {
     @Column(name = "updated_at", nullable = false)
     private LocalDateTime updatedAt;
 
+    // Признак, разрешена ли синхронизация этому локальному серверу
+    @Column(name = "sync_enabled", nullable = false)
+    private Boolean syncEnabled;
+
+    // Время последней успешной синхронизации
+    @Column(name = "last_sync_at")
+    private LocalDateTime lastSyncAt;
+
     public LocalServer() {
     }
 
@@ -55,6 +63,11 @@ public class LocalServer {
 
         if (this.status == null) {
             this.status = "offline";
+        }
+
+        // По умолчанию синхронизация разрешена
+        if (this.syncEnabled == null) {
+            this.syncEnabled = true;
         }
     }
 
@@ -137,5 +150,21 @@ public class LocalServer {
 
     public LocalDateTime getUpdatedAt() {
         return updatedAt;
+    }
+
+    public Boolean getSyncEnabled() {
+        return syncEnabled;
+    }
+
+    public void setSyncEnabled(Boolean syncEnabled) {
+        this.syncEnabled = syncEnabled;
+    }
+
+    public LocalDateTime getLastSyncAt() {
+        return lastSyncAt;
+    }
+
+    public void setLastSyncAt(LocalDateTime lastSyncAt) {
+        this.lastSyncAt = lastSyncAt;
     }
 }
