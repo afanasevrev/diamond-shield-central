@@ -13,4 +13,6 @@ public interface ScheduleIntervalRepository extends JpaRepository<ScheduleInterv
 
     // Удалить интервалы при полном обновлении расписания
     void deleteByScheduleId(UUID scheduleId);
+
+    List<ScheduleInterval> findByScheduleIdAndDayOfWeek(UUID scheduleId, Integer dayOfWeek);
 }
