@@ -32,8 +32,13 @@ public class SecurityConfig {
                         session.sessionCreationPolicy(SessionCreationPolicy.STATELESS)
                 )
                 .authorizeHttpRequests(auth -> auth
-                        .requestMatchers("/api/auth/login").permitAll()
-                        .requestMatchers(HttpMethod.OPTIONS, "/**").permitAll()
+                        // API локальных серверов защищается собственным токеном в заголовках
+                        .requestMatchers("/api/local-sync/**").permitAll()
+
+                        // WebSocket endpoint разрешаем, подписки можно дополнительно защищать позже
+                        .requestMatchers("/ws/**").permitAll()
+
+                        .requestMatchers("/api/auth/**").permitAll()
                         .anyRequest().authenticated()
                 )
                 .addFilterBefore(jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class);
