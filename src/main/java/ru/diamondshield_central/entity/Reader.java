@@ -35,6 +35,9 @@ public class Reader {
     @Column(name = "updated_at", nullable = false)
     private LocalDateTime updatedAt;
 
+    @Column(name = "access_point_id")
+    private UUID accessPointId;
+
     public Reader() {
     }
 
@@ -104,5 +107,13 @@ public class Reader {
 
     public LocalDateTime getUpdatedAt() {
         return updatedAt;
+    }
+
+    public UUID getAccessPointId() {
+        return accessPointId;
+    }
+
+    public void setAccessPointId(UUID accessPointId) {
+        this.accessPointId = accessPointId;
     }
 }

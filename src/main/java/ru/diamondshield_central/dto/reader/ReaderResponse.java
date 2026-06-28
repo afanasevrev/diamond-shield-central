@@ -16,6 +16,9 @@ public class ReaderResponse {
     private LocalDateTime createdAt;
     private LocalDateTime updatedAt;
 
+    private UUID accessPointId;
+
+
     public ReaderResponse() {
     }
 
@@ -62,5 +65,13 @@ public class ReaderResponse {
 
     public LocalDateTime getUpdatedAt() {
         return updatedAt;
+    }
+
+    public UUID getAccessPointId() {
+        return accessPointId;
+    }
+
+    public void setAccessPointId(UUID accessPointId) {
+        this.accessPointId = accessPointId;
     }
 }

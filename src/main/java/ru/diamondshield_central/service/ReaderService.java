@@ -58,6 +58,8 @@ public class ReaderService {
         reader.setReaderType(request.getReaderType());
         reader.setDirection(request.getDirection());
         reader.setStatus("offline");
+        reader.setAccessPointId(request.getAccessPointId());
+
 
         Reader saved = readerRepository.save(reader);
 
@@ -76,6 +78,8 @@ public class ReaderService {
         reader.setName(request.getName());
         reader.setReaderType(request.getReaderType());
         reader.setDirection(request.getDirection());
+        reader.setAccessPointId(request.getAccessPointId());
+
 
         if (request.getStatus() != null) {
             reader.setStatus(request.getStatus());

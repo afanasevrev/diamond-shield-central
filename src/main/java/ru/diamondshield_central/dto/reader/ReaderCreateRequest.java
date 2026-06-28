@@ -21,6 +21,9 @@ public class ReaderCreateRequest {
     @Size(max = 20)
     private String direction;
 
+    private UUID accessPointId;
+
+
     public ReaderCreateRequest() {
     }
 
@@ -54,5 +57,13 @@ public class ReaderCreateRequest {
 
     public void setDirection(String direction) {
         this.direction = direction;
+    }
+
+    public UUID getAccessPointId() {
+        return accessPointId;
+    }
+
+    public void setAccessPointId(UUID accessPointId) {
+        this.accessPointId = accessPointId;
     }
 }

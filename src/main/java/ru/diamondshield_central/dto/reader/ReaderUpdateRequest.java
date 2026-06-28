@@ -3,6 +3,8 @@ package ru.diamondshield_central.dto.reader;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
 
+import java.util.UUID;
+
 public class ReaderUpdateRequest {
 
     @NotBlank
@@ -17,6 +19,8 @@ public class ReaderUpdateRequest {
 
     @Size(max = 50)
     private String status;
+
+    private UUID accessPointId;
 
     public ReaderUpdateRequest() {
     }
@@ -51,5 +55,13 @@ public class ReaderUpdateRequest {
 
     public void setStatus(String status) {
         this.status = status;
+    }
+
+    public UUID getAccessPointId() {
+        return accessPointId;
+    }
+
+    public void setAccessPointId(UUID accessPointId) {
+        this.accessPointId = accessPointId;
     }
 }

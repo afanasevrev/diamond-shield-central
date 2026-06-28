@@ -109,3 +109,15 @@ CREATE INDEX idx_access_points_is_active ON access_points(is_active);
 CREATE INDEX idx_device_status_history_object_id ON device_status_history(object_id);
 CREATE INDEX idx_device_status_history_device_type_device_id ON device_status_history(device_type, device_id);
 CREATE INDEX idx_device_status_history_created_at ON device_status_history(created_at);
+
+ALTER TABLE readers
+ADD COLUMN IF NOT EXISTS access_point_id UUID;
+
+ALTER TABLE readers
+ADD CONSTRAINT fk_readers_access_point
+FOREIGN KEY (access_point_id)
+REFERENCES access_points(id)
+ON DELETE SET NULL;
+
+CREATE INDEX IF NOT EXISTS idx_readers_access_point_id
+ON readers(access_point_id);
