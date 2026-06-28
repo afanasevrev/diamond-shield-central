@@ -8,6 +8,7 @@ public class LocalConfigReaderDto {
 
     private UUID id;
     private UUID controllerId;
+    private UUID accessPointId;
     private String name;
     private String readerType;
     private String direction;
@@ -23,6 +24,7 @@ public class LocalConfigReaderDto {
         dto.readerType = reader.getReaderType();
         dto.direction = reader.getDirection();
         dto.status = reader.getStatus();
+        dto.accessPointId= reader.getAccessPointId();
 
         return dto;
     }
