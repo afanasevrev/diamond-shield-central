@@ -59,7 +59,8 @@ public class ReaderService {
         reader.setDirection(request.getDirection());
         reader.setStatus("offline");
         reader.setAccessPointId(request.getAccessPointId());
-
+        reader.setPercoExdevNumber(request.getPercoExdevNumber());
+        reader.setPercoDirection(request.getPercoDirection());
 
         Reader saved = readerRepository.save(reader);
 
@@ -79,6 +80,8 @@ public class ReaderService {
         reader.setReaderType(request.getReaderType());
         reader.setDirection(request.getDirection());
         reader.setAccessPointId(request.getAccessPointId());
+        reader.setPercoExdevNumber(request.getPercoExdevNumber());
+        reader.setPercoDirection(request.getPercoDirection());
 
 
         if (request.getStatus() != null) {

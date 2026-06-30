@@ -14,6 +14,10 @@ public class LocalConfigReaderDto {
     private String direction;
     private String status;
 
+    private Integer percoExdevNumber;
+
+    private Integer percoDirection;
+
     public static LocalConfigReaderDto fromEntity(Reader reader) {
         LocalConfigReaderDto dto = new LocalConfigReaderDto();
 
@@ -25,7 +29,8 @@ public class LocalConfigReaderDto {
         dto.direction = reader.getDirection();
         dto.status = reader.getStatus();
         dto.accessPointId= reader.getAccessPointId();
-
+        dto.percoExdevNumber = reader.getPercoExdevNumber();
+        dto.percoDirection = reader.getPercoDirection();
         return dto;
     }
 

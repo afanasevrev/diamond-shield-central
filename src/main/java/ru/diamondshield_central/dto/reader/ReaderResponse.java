@@ -15,9 +15,9 @@ public class ReaderResponse {
     private String status;
     private LocalDateTime createdAt;
     private LocalDateTime updatedAt;
-
     private UUID accessPointId;
-
+    private Integer percoExdevNumber;
+    private Integer percoDirection;
 
     public ReaderResponse() {
     }
@@ -73,5 +73,21 @@ public class ReaderResponse {
 
     public void setAccessPointId(UUID accessPointId) {
         this.accessPointId = accessPointId;
+    }
+
+    public Integer getPercoExdevNumber() {
+        return percoExdevNumber;
+    }
+
+    public void setPercoExdevNumber(Integer percoExdevNumber) {
+        this.percoExdevNumber = percoExdevNumber;
+    }
+
+    public Integer getPercoDirection() {
+        return percoDirection;
+    }
+
+    public void setPercoDirection(Integer percoDirection) {
+        this.percoDirection = percoDirection;
     }
 }

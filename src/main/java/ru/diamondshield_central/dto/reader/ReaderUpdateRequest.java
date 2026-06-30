@@ -22,6 +22,10 @@ public class ReaderUpdateRequest {
 
     private UUID accessPointId;
 
+    private Integer percoExdevNumber;
+
+    private Integer percoDirection;
+
     public ReaderUpdateRequest() {
     }
 
@@ -64,4 +68,21 @@ public class ReaderUpdateRequest {
     public void setAccessPointId(UUID accessPointId) {
         this.accessPointId = accessPointId;
     }
+
+    public Integer getPercoExdevNumber() {
+        return percoExdevNumber;
+    }
+
+    public void setPercoExdevNumber(Integer percoExdevNumber) {
+        this.percoExdevNumber = percoExdevNumber;
+    }
+
+    public Integer getPercoDirection() {
+        return percoDirection;
+    }
+
+    public void setPercoDirection(Integer percoDirection) {
+        this.percoDirection = percoDirection;
+    }
+
 }

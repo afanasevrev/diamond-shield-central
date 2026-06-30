@@ -38,6 +38,12 @@ public class Reader {
     @Column(name = "access_point_id")
     private UUID accessPointId;
 
+    @Column(name = "perco_exdev_number")
+    private Integer percoExdevNumber;
+
+    @Column(name = "perco_direction")
+    private Integer percoDirection;
+
     public Reader() {
     }
 
@@ -115,5 +121,21 @@ public class Reader {
 
     public void setAccessPointId(UUID accessPointId) {
         this.accessPointId = accessPointId;
+    }
+
+    public Integer getPercoExdevNumber() {
+        return percoExdevNumber;
+    }
+
+    public void setPercoExdevNumber(Integer percoExdevNumber) {
+        this.percoExdevNumber = percoExdevNumber;
+    }
+
+    public Integer getPercoDirection() {
+        return percoDirection;
+    }
+
+    public void setPercoDirection(Integer percoDirection) {
+        this.percoDirection = percoDirection;
     }
 }
