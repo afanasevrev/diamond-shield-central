@@ -1,6 +1,6 @@
 package ru.diamondshield_central.service;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
+import tools.jackson.databind.ObjectMapper;
 import jakarta.servlet.http.HttpServletRequest;
 import org.apache.poi.ss.usermodel.*;
 import org.springframework.security.core.Authentication;
