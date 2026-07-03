@@ -6,9 +6,9 @@ spring:
     name: diamond-shield-central
 
   datasource:
-    url: jdbc:postgresql://192.168.1.106:5432/diamond_shield_central
-    username: postgres
-    password: postgres
+    url: jdbc:postgresql://192.168.1.107:5432/diamond_shield_central
+    username: rewoly
+    password: Marshmellow89!
     driver-class-name: org.postgresql.Driver
 
   jpa:
@@ -22,7 +22,7 @@ spring:
           time_zone: UTC
 
   flyway:
-    enabled: true
+    enabled: false
     locations: classpath:db/migration
 
 security:
