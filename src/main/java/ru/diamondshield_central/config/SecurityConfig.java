@@ -51,11 +51,10 @@ public class SecurityConfig {
             throws Exception {
         return configuration.getAuthenticationManager();
     }
-    /**
+/**
     @Bean
     public PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder(12);
     }
-    **/
-    // Пока убираем, потому то он есть в PassworConfig
+**/
 }
