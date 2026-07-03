@@ -29,8 +29,7 @@ public class PersonPhoto {
     private Integer fileSize;
 
     // BYTEA в PostgreSQL
-    @Lob
-    @Column(name = "photo_data", nullable = false)
+    @Column(name = "photo_data", nullable = false, columnDefinition = "bytea")
     private byte[] photoData;
 
     // Признак основной фотографии
