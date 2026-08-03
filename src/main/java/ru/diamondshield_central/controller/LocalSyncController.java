@@ -41,7 +41,6 @@ public class LocalSyncController {
                                                   @Valid @RequestBody LocalServerHeartbeatRequest request) {
         // Проверяем локальный сервер по отдельному токену
         LocalServer localServer = localServerAuthService.authenticate(localServerId, token);
-
         return heartbeatService.heartbeat(localServer, request);
     }
 
