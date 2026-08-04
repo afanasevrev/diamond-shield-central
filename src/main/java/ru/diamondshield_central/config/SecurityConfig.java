@@ -60,6 +60,9 @@ public class SecurityConfig {
 
                         // Все остальные endpoints требуют JWT
                         .anyRequest().authenticated()
+
+                        .requestMatchers(HttpMethod.POST, "/api/public/guest-requests").permitAll()
+
                 )
 
                 // JWT-фильтр ставим перед UsernamePasswordAuthenticationFilter
