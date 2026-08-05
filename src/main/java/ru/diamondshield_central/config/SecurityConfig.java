@@ -61,7 +61,7 @@ public class SecurityConfig {
                         // Все остальные endpoints требуют JWT
                         .anyRequest().authenticated()
 
-                        .requestMatchers(HttpMethod.POST, "/api/public/guest-requests").permitAll()
+                        //.requestMatchers(HttpMethod.POST, "/api/public/guest-requests").permitAll()
 
                 )
 
