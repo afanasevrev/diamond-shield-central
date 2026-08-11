@@ -63,7 +63,6 @@ public class SecurityConfig {
                         // Все остальные endpoints требуют JWT
                         .anyRequest().authenticated()
 
-
                 )
 
                 // JWT-фильтр ставим перед UsernamePasswordAuthenticationFilter
