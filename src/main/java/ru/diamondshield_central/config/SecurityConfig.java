@@ -58,10 +58,11 @@ public class SecurityConfig {
                         // Авторизация/логин/регистрация
                         .requestMatchers("/api/auth/**").permitAll()
 
+                        .requestMatchers(HttpMethod.POST, "/api/public/guest-requests").permitAll()
+
                         // Все остальные endpoints требуют JWT
                         .anyRequest().authenticated()
 
-                        //.requestMatchers(HttpMethod.POST, "/api/public/guest-requests").permitAll()
 
                 )
 
