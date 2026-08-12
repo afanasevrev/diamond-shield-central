@@ -21,7 +21,9 @@ public class LocalServerCreateRequest {
     @Size(max = 50)
     private String macAddress;
 
-    private String serverTokenHash;
+    @NotBlank
+    @Size(min = 16, max = 255)
+    private String serverToken;
 
     @Size(max = 50)
     private String softwareVersion;
@@ -61,12 +63,12 @@ public class LocalServerCreateRequest {
         this.macAddress = macAddress;
     }
 
-    public String getServerTokenHash() {
-        return serverTokenHash;
+    public String getServerToken() {
+        return serverToken;
     }
 
-    public void setServerTokenHash(String serverTokenHash) {
-        this.serverTokenHash = serverTokenHash;
+    public void setServerToken(String serverToken) {
+        this.serverToken = serverToken;
     }
 
     public String getSoftwareVersion() {

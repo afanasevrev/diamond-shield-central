@@ -3,6 +3,7 @@ package ru.diamondshield_central.service;
 import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import ru.diamondshield_central.dto.localserver.LocalServerCreateRequest;
@@ -24,12 +25,18 @@ public class LocalServerService {
     private final AccessObjectRepository accessObjectRepository;
     private final AuditService auditService;
 
-    public LocalServerService(LocalServerRepository localServerRepository,
-                              AccessObjectRepository accessObjectRepository,
-                              AuditService auditService) {
+    private final PasswordEncoder passwordEncoder;
+
+    public LocalServerService(
+            LocalServerRepository localServerRepository,
+            AccessObjectRepository accessObjectRepository,
+            AuditService auditService,
+            PasswordEncoder passwordEncoder
+    ) {
         this.localServerRepository = localServerRepository;
         this.accessObjectRepository = accessObjectRepository;
         this.auditService = auditService;
+        this.passwordEncoder = passwordEncoder;
     }
 
     @Transactional(readOnly = true)
@@ -58,7 +65,7 @@ public class LocalServerService {
         localServer.setName(request.getName());
         localServer.setIpAddress(request.getIpAddress());
         localServer.setMacAddress(request.getMacAddress());
-        localServer.setServerTokenHash(request.getServerTokenHash());
+        localServer.setServerTokenHash(passwordEncoder.encode(request.getServerToken()));
         localServer.setSoftwareVersion(request.getSoftwareVersion());
         localServer.setStatus("offline");
 
@@ -79,7 +86,11 @@ public class LocalServerService {
         localServer.setName(request.getName());
         localServer.setIpAddress(request.getIpAddress());
         localServer.setMacAddress(request.getMacAddress());
-        localServer.setServerTokenHash(request.getServerTokenHash());
+
+        if (request.getServerToken() != null && !request.getServerToken().isBlank()) {
+            localServer.setServerTokenHash(passwordEncoder.encode(request.getServerToken()));
+        }
+        
         localServer.setSoftwareVersion(request.getSoftwareVersion());
 
         if (request.getStatus() != null) {
