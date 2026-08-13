@@ -57,4 +57,16 @@ public class LocalConfigReaderDto {
     public String getStatus() {
         return status;
     }
+
+    public UUID getAccessPointId() {
+        return accessPointId;
+    }
+
+    public Integer getPercoExdevNumber() {
+        return percoExdevNumber;
+    }
+
+    public Integer getPercoDirection() {
+        return percoDirection;
+    }
 }

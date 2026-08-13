@@ -32,6 +32,9 @@ public class ReaderResponse {
         response.status = reader.getStatus();
         response.createdAt = reader.getCreatedAt();
         response.updatedAt = reader.getUpdatedAt();
+        response.accessPointId = reader.getAccessPointId();
+        response.percoExdevNumber = reader.getPercoExdevNumber();
+        response.percoDirection = reader.getPercoDirection();
         return response;
     }
 
