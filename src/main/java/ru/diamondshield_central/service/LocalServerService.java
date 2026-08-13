@@ -90,7 +90,7 @@ public class LocalServerService {
         if (request.getServerToken() != null && !request.getServerToken().isBlank()) {
             localServer.setServerTokenHash(passwordEncoder.encode(request.getServerToken()));
         }
-        
+
         localServer.setSoftwareVersion(request.getSoftwareVersion());
 
         if (request.getStatus() != null) {
