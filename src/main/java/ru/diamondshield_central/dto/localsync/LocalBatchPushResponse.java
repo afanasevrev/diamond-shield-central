@@ -1,5 +1,6 @@
 package ru.diamondshield_central.dto.localsync;
 
+import java.util.List;
 import java.util.UUID;
 
 public class LocalBatchPushResponse {
@@ -10,6 +11,16 @@ public class LocalBatchPushResponse {
     private int acceptedItems;
     private int skippedItems;
     private int errorItems;
+
+    private List<LocalBatchItemResult> items;
+
+    public List<LocalBatchItemResult> getItems() {
+        return items;
+    }
+
+    public void setItems(List<LocalBatchItemResult> items) {
+        this.items = items;
+    }
 
     public LocalBatchPushResponse() {
     }
