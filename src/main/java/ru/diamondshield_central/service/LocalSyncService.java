@@ -91,6 +91,15 @@ public class LocalSyncService {
                     event.setReason(request.getReason());
                     event.setIdentifierType(request.getIdentifierType());
 
+                    event.setIdentifierMasked(request.getIdentifierMasked());
+                    event.setIdentifierValueHash(request.getIdentifierValueHash());
+
+                    event.setUnknownIdentifier(
+                            Boolean.TRUE.equals(request.getUnknownIdentifier())
+                                    || (request.getPersonId() == null
+                                    && request.getIdentifierId() == null)
+                    );
+
                     if (request.getIdentifierValue() != null && !request.getIdentifierValue().isBlank()) {
                         String normalized = identifierSecurityService.normalize(request.getIdentifierValue());
                         event.setIdentifierValueHash(identifierSecurityService.sha256(normalized));

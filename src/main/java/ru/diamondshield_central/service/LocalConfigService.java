@@ -1,5 +1,6 @@
 package ru.diamondshield_central.service;
 
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import ru.diamondshield_central.dto.localsync.*;
@@ -8,6 +9,7 @@ import ru.diamondshield_central.repository.*;
 
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.Objects;
 import java.util.UUID;
 
 @Service
@@ -60,17 +62,31 @@ public class LocalConfigService {
 
         List<AccessPoint> accessPoints =
                 accessPointRepository.findByObjectId(objectId, org.springframework.data.domain.Pageable.unpaged()).getContent();
-
+        /**
         List<Person> persons =
                 personRepository.findByOrganizationId(organizationId, org.springframework.data.domain.Pageable.unpaged()).getContent();
+        **/
 
+        /**
         List<AccessIdentifier> identifiers = persons.stream()
                 .flatMap(person -> accessIdentifierRepository
                         .findByPersonId(person.getId(), org.springframework.data.domain.Pageable.unpaged())
                         .getContent()
                         .stream())
                 .toList();
+        **/
 
+        List<AccessRule> rules = accessRuleRepository.findAllForObject(objectId);
+
+        List<Person> persons = rules.stream().map(AccessRule::getPerson).filter(Objects::nonNull).distinct().toList();
+
+        List<AccessIdentifier> identifiers = persons.stream().flatMap(person ->
+                                                accessIdentifierRepository.findByPersonId(
+                                                person.getId(),
+                                                Pageable.unpaged()
+                                                ).getContent().stream()).toList();
+
+        /**
         List<AccessRule> rules = persons.stream()
                 .flatMap(person -> accessRuleRepository
                         .findByPersonId(person.getId(), org.springframework.data.domain.Pageable.unpaged())
@@ -78,6 +94,7 @@ public class LocalConfigService {
                         .stream())
                 .filter(rule -> rule.getAccessPoint() != null && rule.getAccessPoint().getObject().getId().equals(objectId))
                 .toList();
+        **/
 
         List<Schedule> schedules =
                 scheduleRepository.findByOrganizationId(organizationId, org.springframework.data.domain.Pageable.unpaged()).getContent();

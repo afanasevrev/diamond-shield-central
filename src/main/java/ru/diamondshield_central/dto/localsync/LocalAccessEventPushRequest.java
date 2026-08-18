@@ -3,7 +3,6 @@ package ru.diamondshield_central.dto.localsync;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
-
 import java.time.LocalDateTime;
 import java.util.UUID;
 
@@ -38,6 +37,37 @@ public class LocalAccessEventPushRequest {
 
     @Size(max = 255)
     private String identifierValue;
+
+    @Size(max = 100)
+    private String identifierMasked;
+
+    private String identifierValueHash;
+
+    private Boolean unknownIdentifier;
+
+    public String getIdentifierMasked() {
+        return identifierMasked;
+    }
+
+    public void setIdentifierMasked(String identifierMasked) {
+        this.identifierMasked = identifierMasked;
+    }
+
+    public String getIdentifierValueHash() {
+        return identifierValueHash;
+    }
+
+    public void setIdentifierValueHash(String identifierValueHash) {
+        this.identifierValueHash = identifierValueHash;
+    }
+
+    public Boolean getUnknownIdentifier() {
+        return unknownIdentifier;
+    }
+
+    public void setUnknownIdentifier(Boolean unknownIdentifier) {
+        this.unknownIdentifier = unknownIdentifier;
+    }
 
     public LocalAccessEventPushRequest() {
     }

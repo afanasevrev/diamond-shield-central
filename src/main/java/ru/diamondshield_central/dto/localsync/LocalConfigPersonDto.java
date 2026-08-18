@@ -8,7 +8,7 @@ public class LocalConfigPersonDto {
 
     private UUID id;
     private String personType;
-    private String personnelNumber;
+
     private String lastName;
     private String firstName;
     private String middleName;
@@ -20,7 +20,6 @@ public class LocalConfigPersonDto {
         // На локальный сервер не отправляем документы, телефон и email
         dto.id = person.getId();
         dto.personType = person.getPersonType();
-        dto.personnelNumber = person.getPersonnelNumber();
         dto.lastName = person.getLastName();
         dto.firstName = person.getFirstName();
         dto.middleName = person.getMiddleName();
@@ -35,10 +34,6 @@ public class LocalConfigPersonDto {
 
     public String getPersonType() {
         return personType;
-    }
-
-    public String getPersonnelNumber() {
-        return personnelNumber;
     }
 
     public String getLastName() {
