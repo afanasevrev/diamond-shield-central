@@ -12,6 +12,7 @@ import ru.diamondshield_central.entity.AccessPoint;
 import ru.diamondshield_central.entity.AccessRule;
 import ru.diamondshield_central.entity.Person;
 import ru.diamondshield_central.entity.Schedule;
+import ru.diamondshield_central.exception.BadRequestException;
 import ru.diamondshield_central.exception.ConflictException;
 import ru.diamondshield_central.exception.EntityNotFoundException;
 import ru.diamondshield_central.repository.AccessPointRepository;
@@ -69,11 +70,21 @@ public class AccessRuleService {
             throw new ConflictException("Access rule already exists for this person and access point");
         }
 
-        Person person = personRepository.findById(request.getPersonId())
-                .orElseThrow(() -> new EntityNotFoundException("Person not found"));
+        Person person = personRepository.findById(request.getPersonId()).orElseThrow(()
+                -> new EntityNotFoundException("Person not found"));
 
-        AccessPoint accessPoint = accessPointRepository.findById(request.getAccessPointId())
-                .orElseThrow(() -> new EntityNotFoundException("Access point not found"));
+        AccessPoint accessPoint = accessPointRepository.findById(request.getAccessPointId()).orElseThrow(()
+                -> new EntityNotFoundException("Access point not found"));
+
+        UUID personOrganizationId = person.getOrganization().getId();
+
+        UUID pointOrganizationId = accessPoint.getObject().getOrganization().getId();
+
+        if (!personOrganizationId.equals(pointOrganizationId)) {
+            throw new BadRequestException(
+                    "Person and access point belong to different organizations"
+            );
+        }
 
         Schedule schedule = findScheduleOrNull(request.getScheduleId());
 
