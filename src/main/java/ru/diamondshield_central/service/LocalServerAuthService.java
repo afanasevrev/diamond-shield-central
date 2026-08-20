@@ -1,15 +1,10 @@
 package ru.diamondshield_central.service;
 
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.ExceptionHandler;
-import ru.diamondshield_central.dto.common.ApiErrorResponse;
 import ru.diamondshield_central.entity.LocalServer;
 import ru.diamondshield_central.exception.BadRequestException;
 import ru.diamondshield_central.exception.EntityNotFoundException;
-import ru.diamondshield_central.exception.LocalServerAuthenticationException;
 import ru.diamondshield_central.repository.LocalServerRepository;
 
 import java.time.LocalDateTime;
